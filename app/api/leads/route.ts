@@ -7,6 +7,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const LEADS_FILE_PATH = path.join(process.cwd(), 'data', 'leads.json');
 
 async function getLeads() {
+    // On Vercel, file system is read-only, so return empty array
+    if (process.env.VERCEL === '1') {
+        console.warn('File system storage not available on Vercel - returning empty leads array');
+        return [];
+    }
+
     try {
         const data = await fs.readFile(LEADS_FILE_PATH, 'utf-8');
         return JSON.parse(data);
@@ -16,7 +22,21 @@ async function getLeads() {
 }
 
 async function saveLeads(leads: any[]) {
-    await fs.writeFile(LEADS_FILE_PATH, JSON.stringify(leads, null, 2));
+    // On Vercel, file system is read-only, so skip saving
+    if (process.env.VERCEL === '1') {
+        console.warn('File system storage not available on Vercel - leads not persisted');
+        console.log('Lead data (not saved):', leads[leads.length - 1]); // Log the latest lead
+        return;
+    }
+
+    try {
+        // Ensure directory exists
+        const dir = path.dirname(LEADS_FILE_PATH);
+        await fs.mkdir(dir, { recursive: true });
+        await fs.writeFile(LEADS_FILE_PATH, JSON.stringify(leads, null, 2));
+    } catch (e) {
+        console.error('Failed to save leads:', e);
+    }
 }
 
 export async function GET() {
@@ -26,6 +46,11 @@ export async function GET() {
 
 export async function POST(request: Request) {
     try {
+        // Get dynamic host for proper URL generation in all environments
+        const host = request.headers.get('host') || 'localhost:3000';
+        const protocol = host.includes('localhost') ? 'http' : 'https';
+        const baseUrl = `${protocol}://${host}`;
+
         const body = await request.json();
         const { email, phone } = body;
 
@@ -87,7 +112,7 @@ export async function POST(request: Request) {
                             <li><strong>Phone:</strong> ${phone}</li>
                             <li><strong>Captured At:</strong> ${new Date().toLocaleString()}</li>
                         </ul>
-                        <p><a href="http://localhost:3000/admin">View in Admin Dashboard</a></p>
+                        <p><a href="${baseUrl}/admin">View in Admin Dashboard</a></p>
                     </div>
                 `,
             });
