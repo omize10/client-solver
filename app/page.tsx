@@ -65,7 +65,7 @@ export default function Home() {
           <div className="flex items-center justify-between h-20 lg:h-24">
             <Link href="/" className="flex items-center space-x-3 group">
               <Image
-                src="/assets/client_solver_logo_transparent_1769570433173.png"
+                src="/assets/logo.png"
                 alt="Client Solver"
                 width={200}
                 height={50}
@@ -252,72 +252,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ROI Section */}
-        <section className="section-padding bg-slate-50 relative overflow-hidden backdrop-blur-md bg-opacity-70">
-          <div className="absolute right-0 top-0 w-1/2 h-full bg-secondary/10 blur-[150px] pointer-events-none"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="reveal">
-                <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">The Mathematics of <span className="text-gradient-gold">Growth</span></h2>
-                <p className="text-accent text-lg mb-8 font-medium">We don't just generate leads; we engineer profitability. Here is the breakdown of your potential return on investment with our system.</p>
-                <button onClick={() => setIsModalOpen(true)}
-                  className="btn-primary btn-shine inline-block bg-secondary text-white px-8 py-4 rounded-sm font-semibold tracking-widest hover:bg-opacity-90 uppercase cursor-pointer">
-                  Book Discover Call
-                </button>
-              </div>
-              <div className="reveal delay-200">
-                <div className="glass p-8 rounded-sm border-l-4 border-secondary shadow-xl bg-white/80">
-                  <h3 className="text-primary font-serif text-2xl mb-6">Monthly Revenue Projection</h3>
-                  <div className="space-y-6">
-                    <div className="flex justify-between items-center border-b border-primary/10 pb-4">
-                      <div>
-                        <div className="text-accent text-sm uppercase tracking-wider font-bold">Close Rate</div>
-                        <div className="text-primary font-medium">Conservative Estimate</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl text-primary font-bold">20%</div>
-                        <div className="text-secondary text-sm font-semibold">4-6 Deals/Mo</div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-primary/10 pb-4">
-                      <div>
-                        <div className="text-accent text-sm uppercase tracking-wider font-bold">Average Deal</div>
-                        <div className="text-primary font-medium">$500k @ 3% Comm.</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl text-primary font-bold">$15,000</div>
-                        <div className="text-secondary text-sm font-semibold">Gross Commission</div>
-                      </div>
-                    </div>
-                    <div className="bg-slate-50 p-4 rounded-sm mt-4 border border-slate-200">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-accent">Brokerage Revenue (30%)</span>
-                        <span className="text-green-600 font-bold">+$18,000/mo</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-primary font-bold">Agent Revenue (70%)</span>
-                        <span className="text-green-600 font-bold">+$42,000/mo</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Testimonials Section */}
         <section id="testimonials" className="section-padding relative bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
               <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">Client Endorsements</h2>
-              <p className="text-accent max-w-2xl mx-auto font-medium">Join the ranks of top-producing agents who have systematized their growth.</p>
+              <p className="text-accent max-w-2xl mx-auto font-medium">Trusted by over 250+ independent brokerages nationwide who have systematized their growth.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { name: "Michael Rodriguez", role: "Luxury Agent, Miami", text: "Client Solver transformed my business. I went from inconsistent leads to 25+ qualified appointments monthly. The ROI is undeniable.", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" },
-                { name: "Sarah Chen", role: "Commercial Broker, SF", text: "The quality of appointments is outstanding—ready to transact, not tire-kickers. It's the only system I trust for consistent volume.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" },
-                { name: "David Thompson", role: "Team Lead, Austin", text: "32 appointments in 30 days. Closed 4 deals immediately. If you want to scale without the headache of ad management, this is it.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" }
+                { name: "Michael Rodriguez", role: "Independent Broker, Miami", text: "Client Solver transformed my business. I went from inconsistent leads to 25+ qualified appointments monthly. The ROI is undeniable.", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" },
+                { name: "Sarah Chen", role: "Independent Broker, Georgia", text: "The quality of appointments is outstanding—ready to transact, not tire-kickers. It's the only system I trust for consistent volume.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" },
+                { name: "James Patterson", role: "Independent Broker, Seattle WA", text: "32 appointments in 30 days. Closed 4 deals immediately. If you want to scale without the headache of ad management, this is it.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" }
               ].map((t, i) => (
                 <div key={i} className="glass p-10 rounded-sm border border-slate-100 reveal hover-lift group bg-slate-50/50">
                   <div className="flex items-center mb-6 space-x-1">
@@ -344,7 +290,7 @@ export default function Home() {
           <div className="absolute left-0 bottom-0 w-1/3 h-1/2 bg-blue-100 blur-[120px] pointer-events-none"></div>
 
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-serif text-primary mb-8 reveal leading-tight">Elevate Your Real Estate Career</h2>
+            <h2 className="text-4xl md:text-6xl font-serif text-primary mb-8 reveal leading-tight">Elevate Your Real Estate Brokerage</h2>
             <p className="text-xl text-accent mb-12 reveal delay-100 font-medium max-w-3xl mx-auto leading-relaxed">
               We accept a limited number of new partners each month to ensure service quality.
               <span className="text-secondary font-bold block mt-2 italic">Secure your market exclusivity today.</span>
@@ -386,24 +332,27 @@ export default function Home() {
       {/* FOOTER - REDESIGNED PREMIUM FOOTER */}
       <footer className="bg-primary text-white pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20">
             {/* Brand Column */}
             <div className="space-y-6">
               <Image
-                src="/assets/client_solver_logo_transparent_1769570433173.png"
+                src="/assets/logo.png"
                 alt="Client Solver"
                 width={180}
                 height={45}
                 className="opacity-90 [filter:brightness(0)_invert(1)]"
               />
               <p className="text-slate-400 text-sm leading-relaxed font-medium">
-                The gold standard in real estate lead generation. We engineer consistent growth for top producers and brokerages through data-backed organic outreach.
+                The gold standard in real estate lead generation. We engineer consistent growth for top producers and brokerages through AI organic data outreach.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+                </a>
+                <a href="mailto:partnerships@clientsolver.com" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
                   <Mail className="w-5 h-5" />
                 </a>
               </div>
@@ -420,23 +369,13 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Compliance Column */}
-            <div className="space-y-6">
-              <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-secondary">Security</h4>
-              <ul className="space-y-4 text-sm text-slate-400">
-                <li className="flex items-center space-x-2"><Shield className="w-4 h-4 text-secondary/60" /> <span>Enterprise Data Policy</span></li>
-                <li className="flex items-center space-x-2"><CheckCircle className="w-4 h-4 text-secondary/60" /> <span>TCPA & GDPR Compliant</span></li>
-                <li className="flex items-center space-x-2"><Clock className="w-4 h-4 text-secondary/60" /> <span>Real-time Monitoring</span></li>
-              </ul>
-            </div>
 
-            {/* Headquarters Column */}
+            {/* Inquiries Column */}
             <div className="space-y-6">
               <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-secondary">Inquiries</h4>
               <div className="space-y-4">
-                <span>Vancouver, BC</span>
                 <button onClick={() => setIsModalOpen(true)} className="flex items-center space-x-2 text-white font-bold text-sm bg-slate-800 px-4 py-2 rounded transition-all hover:bg-slate-700">
-                  <span>Book Strategy Call</span>
+                  <span>Book Discovery Call</span>
                   <ExternalLink className="w-3 h-3" />
                 </button>
               </div>

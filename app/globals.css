@@ -24,8 +24,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  /* Day Mode Gradient: Airy, Professional, Trust */
-  background: linear-gradient(135deg, #F0F4F8 0%, #D9E2EC 100%);
+  /* Much darker blue-gray gradient for dramatic depth */
+  background: linear-gradient(135deg, #BCCCDC 0%, #9FB3C8 50%, #829AB1 100%);
   background-attachment: fixed;
   color: #102A43;
   /* Navy Text */
@@ -43,34 +43,34 @@ h6 {
   color: #102A43;
 }
 
-/* Glassmorphism - "Frosted Ice" */
+/* Glassmorphism - Deeper tones, less white */
 .glass {
-  background: rgba(255, 255, 255, 0.65);
-  /* High opacity white */
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.45);
+  /* Reduced opacity for less white */
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(16, 42, 67, 0.12);
   box-shadow:
-    0 4px 6px -1px rgba(16, 42, 67, 0.05),
-    0 2px 4px -1px rgba(16, 42, 67, 0.03);
+    0 4px 6px -1px rgba(16, 42, 67, 0.08),
+    0 2px 4px -1px rgba(16, 42, 67, 0.05);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.85);
-  /* Navbar */
+  background: rgba(249, 250, 251, 0.75);
+  /* Navbar - slightly less bright */
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(16, 42, 67, 0.05);
+  border-bottom: 1px solid rgba(16, 42, 67, 0.08);
 }
 
 .glass:hover {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.70);
   border-color: #3E8ED0;
   /* Blue border on hover */
   box-shadow:
-    0 20px 25px -5px rgba(62, 142, 208, 0.15),
-    0 10px 10px -5px rgba(62, 142, 208, 0.1);
+    0 20px 25px -5px rgba(62, 142, 208, 0.18),
+    0 10px 10px -5px rgba(62, 142, 208, 0.12);
   transform: translateY(-5px);
 }
 

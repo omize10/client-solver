@@ -43,7 +43,7 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
 
     return (
         <AnimatePresence>
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
                 {/* Backdrop - Reduced blur for clarity */}
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -53,12 +53,13 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
                     className="absolute inset-0 bg-primary/40 backdrop-blur-sm"
                 />
 
-                {/* Modal Content */}
+                {/* Modal Content - Optimized for mobile */}
                 <motion.div
-                    initial={{ scale: 0.95, opacity: 0, y: 20 }}
-                    animate={{ scale: 1, opacity: 1, y: 0 }}
-                    exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                    className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col"
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.95, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col my-auto mx-auto"
                 >
                     {/* Header */}
                     <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-white">
@@ -72,7 +73,7 @@ export default function ApplicationModal({ isOpen, onClose }: ApplicationModalPr
                     </div>
 
                     {/* Body */}
-                    <div className="p-10">
+                    <div className="p-6 sm:p-10">
                         {step === 1 && (
                             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
                                 <h3 className="text-2xl text-primary font-serif font-bold">What is your work email?</h3>
