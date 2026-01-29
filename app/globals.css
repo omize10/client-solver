@@ -24,11 +24,11 @@ html {
 
 body {
   font-family: var(--font-sans);
-  /* Much darker blue-gray gradient for dramatic depth */
-  background: linear-gradient(135deg, #BCCCDC 0%, #9FB3C8 50%, #829AB1 100%);
+  /* Radical Dark Professional Theme */
+  background: #051423;
   background-attachment: fixed;
-  color: #102A43;
-  /* Navy Text */
+  color: #F0F4F8;
+  /* Light slate text */
   overflow-x: hidden;
   perspective: 2000px;
 }
@@ -43,34 +43,32 @@ h6 {
   color: #102A43;
 }
 
-/* Glassmorphism - Deeper tones, less white */
+/* Updated Glassmorphism for Dark Mode */
 .glass {
-  background: rgba(255, 255, 255, 0.45);
-  /* Reduced opacity for less white */
+  background: rgba(16, 42, 67, 0.4);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(16, 42, 67, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
-    0 4px 6px -1px rgba(16, 42, 67, 0.08),
-    0 2px 4px -1px rgba(16, 42, 67, 0.05);
+    0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-strong {
-  background: rgba(249, 250, 251, 0.75);
-  /* Navbar - slightly less bright */
+  background: rgba(5, 20, 35, 0.85);
+  /* Navbar - Dark */
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(16, 42, 67, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .glass:hover {
-  background: rgba(255, 255, 255, 0.70);
+  background: rgba(16, 42, 67, 0.6);
   border-color: #3E8ED0;
-  /* Blue border on hover */
   box-shadow:
-    0 20px 25px -5px rgba(62, 142, 208, 0.18),
-    0 10px 10px -5px rgba(62, 142, 208, 0.12);
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
 
