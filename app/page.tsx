@@ -26,7 +26,8 @@ import {
   Repeat,
   Linkedin,
   MapPin,
-  ExternalLink
+  ExternalLink,
+  Instagram
 } from 'lucide-react';
 import ApplicationModal from '@/components/ApplicationModal';
 
@@ -190,20 +191,14 @@ export default function Home() {
               </div>
               <div className="reveal delay-200 relative">
                 <div className="absolute inset-0 bg-secondary/10 blur-[100px] rounded-full opacity-20"></div>
-                <div className="relative glass p-4 rounded-xl border border-white/10 shadow-2xl bg-slate-900/60 min-h-[400px] flex flex-col items-center justify-center text-center">
-                  <div className="p-8 border-2 border-dashed border-slate-700 rounded-lg">
-                    <Zap className="w-12 h-12 text-secondary/40 mx-auto mb-4" />
-                    <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-2">Image Placeholder</h4>
-                    <p className="text-slate-500 text-sm font-serif italic mb-4">"virtual_meeting_professional_consultation.png"</p>
-                    <p className="text-slate-400 text-xs max-w-xs mx-auto">Generation Prompt: Professional virtual business meeting scene showing a split-screen video call with broker and client...</p>
-                  </div>
-                  {/* <Image
-                    src="/assets/virtual_meeting_consultation_1769570446996.png"
-                    alt="Virtual Consultation"
+                <div className="relative glass p-4 rounded-xl border border-white/10 shadow-2xl bg-slate-900/60 min-h-[400px] flex flex-col items-center justify-center text-center overflow-hidden">
+                  <Image
+                    src="https://images.pexels.com/photos/3584994/pexels-photo-3584994.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Professional Virtual Meeting"
                     width={600}
                     height={400}
-                    className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-700"
-                  /> */}
+                    className="w-full h-auto rounded-lg opacity-95 hover:opacity-100 transition-opacity duration-700 object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -262,7 +257,7 @@ export default function Home() {
         <section id="testimonials" className="section-padding relative bg-[#051423]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
-              <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Client Endorsements</h2>
+              <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Trusted by over 250+ Independent Brokerages</h2>
               <p className="text-slate-400 max-w-2xl mx-auto font-medium">Join 250+ Lead Brokers and 5,000+ Agents nationwide who have systematized their growth with Client Solver.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
@@ -310,10 +305,14 @@ export default function Home() {
                 <span>Limited exclusive slots available for Q1 2026</span>
               </p>
             </div>
-            <div className="mt-20 opacity-30">
-              <div className="max-w-md mx-auto p-4 border border-dashed border-slate-700 rounded text-xs text-slate-500 italic">
-                PLACEHOLDER: "real_estate_closing_handshake.png"
-              </div>
+            <div className="mt-20 max-w-2xl mx-auto">
+              <Image
+                src="https://images.pexels.com/photos/3769714/pexels-photo-3769714.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Real Estate Professional Meeting"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded-xl shadow-2xl opacity-90 hover:opacity-100 transition-opacity duration-700 object-cover"
+              />
             </div>
           </div>
         </section>
@@ -360,7 +359,7 @@ export default function Home() {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a href="mailto:partnerships@clientsolver.com" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
                   <Mail className="w-5 h-5" />

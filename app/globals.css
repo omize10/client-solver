@@ -40,7 +40,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-serif);
-  color: #102A43;
+  color: #FFFFFF;
 }
 
 /* Updated Glassmorphism for Dark Mode */
@@ -74,7 +74,7 @@ h6 {
 
 /* Text Gradients - "Ocean Deep" */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #102A43 0%, #3E8ED0 50%, #2BB0ED 100%);
+  background: linear-gradient(135deg, #2BB0ED 0%, #3E8ED0 50%, #FFD700 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -175,14 +175,14 @@ h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F0F4F8;
+  background: #0A1620;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #BCCCDC;
+  background: #3E8ED0;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3E8ED0;
+  background: #5BA3E0;
 }
