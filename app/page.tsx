@@ -115,9 +115,6 @@ export default function Home() {
                   className="btn-primary btn-shine bg-secondary text-white px-10 py-5 rounded-sm font-semibold text-sm uppercase tracking-widest hover:bg-opacity-90 w-full sm:w-auto cursor-pointer shadow-xl">
                   Book Discovery Call
                 </button>
-                <a href="#benefits" className="group flex items-center text-white text-sm uppercase tracking-widest hover:text-secondary transition-colors font-bold">
-                  <span>Your Advantage</span>
-                </a>
               </div>
             </div>
           </div>
@@ -159,7 +156,7 @@ export default function Home() {
         {/* Methodology (The Process) */}
         <section id="how-it-works" className="section-padding bg-[#0A1A2B] relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="grid lg:grid-cols-1 gap-20 items-center">
               <div className="reveal">
                 <span className="text-secondary text-sm font-bold tracking-widest uppercase mb-4 block">The Process</span>
                 <h2 className="text-3xl md:text-5xl font-serif text-white mb-8 leading-tight">Precision Engineering for <span className="text-gradient-gold">Lead Generation</span></h2>
@@ -187,18 +184,6 @@ export default function Home() {
                       <p className="text-slate-400 font-medium">We handle the scheduling. You simply receive a calendar notification with a qualified prospect ready to list.</p>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="reveal delay-200 relative">
-                <div className="absolute inset-0 bg-secondary/10 blur-[100px] rounded-full opacity-20"></div>
-                <div className="relative glass p-4 rounded-xl border border-white/10 shadow-2xl bg-slate-900/60 min-h-[400px] flex flex-col items-center justify-center text-center overflow-hidden">
-                  <Image
-                    src="https://images.pexels.com/photos/3584994/pexels-photo-3584994.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Professional Virtual Meeting"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto rounded-lg opacity-95 hover:opacity-100 transition-opacity duration-700 object-cover"
-                  />
                 </div>
               </div>
             </div>
@@ -229,6 +214,30 @@ export default function Home() {
                   <p className="text-slate-400 font-medium text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Video Call Section */}
+        <section className="section-padding relative bg-primary/20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="reveal relative">
+              <div className="absolute inset-0 bg-secondary/10 blur-[100px] rounded-full opacity-20"></div>
+              <div className="relative glass p-4 rounded-xl border border-white/10 shadow-2xl bg-slate-900/60 min-h-[400px] flex flex-col items-center justify-center text-center overflow-hidden">
+                <Image
+                  src="https://images.pexels.com/photos/3584994/pexels-photo-3584994.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Professional Virtual Meeting"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded-lg opacity-95 hover:opacity-100 transition-opacity duration-700 object-cover"
+                />
+              </div>
+            </div>
+            <div className="text-center mt-12 reveal delay-100">
+              <button onClick={() => setIsModalOpen(true)}
+                className="btn-primary btn-shine bg-secondary text-white px-10 py-5 rounded-sm font-semibold text-sm uppercase tracking-widest hover:bg-opacity-90 cursor-pointer shadow-xl">
+                Book Discovery Call
+              </button>
             </div>
           </div>
         </section>
