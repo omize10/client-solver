@@ -1,70 +1,26 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, LogOut, Download, Mail, Phone, Calendar as CalendarIcon, RefreshCcw } from 'lucide-react';
-
-interface Lead {
-    id: string;
-    email: string;
-    phone: string;
-    created_at: string;
-    status: string;
-}
+import { Shield, LogOut, Mail, CheckCircle2, Info } from 'lucide-react';
 
 export default function AdminDashboard() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
-    const [leads, setLeads] = useState<Lead[]>([]);
-    const [loading, setLoading] = useState(false);
 
-    const fetchLeads = async () => {
-        setLoading(true);
-        try {
-            const res = await fetch('/api/leads');
-            const data = await res.json();
-            if (data.success) {
-                setLeads(data.leads);
-            }
-        } catch (e) {
-            console.error('Failed to fetch leads', e);
-        }
-        setLoading(false);
-    };
+    // Email addresses from environment variables (shown as placeholders on client)
+    const emailAddresses = [
+        'altufebrahim@gmail.com',
+        'omarkebrahim@gmail.com'
+    ];
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         if (password === '123') {
             setIsAuthenticated(true);
-            fetchLeads();
         } else {
             alert('Invalid Password');
         }
-    };
-
-    const exportToCSV = () => {
-        if (leads.length === 0) return;
-        const headers = ['ID', 'Email', 'Phone', 'Date', 'Status'];
-        const csvContent = [
-            headers.join(','),
-            ...leads.map(lead => [
-                lead.id,
-                lead.email,
-                lead.phone,
-                new Date(lead.created_at).toLocaleString(),
-                lead.status
-            ].join(','))
-        ].join('\n');
-
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-        link.setAttribute('href', url);
-        link.setAttribute('download', `client_solver_leads_${new Date().toISOString().split('T')[0]}.csv`);
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
     };
 
     if (!isAuthenticated) {
@@ -109,20 +65,6 @@ export default function AdminDashboard() {
                     </div>
                     <div className="flex items-center space-x-4">
                         <button
-                            onClick={fetchLeads}
-                            disabled={loading}
-                            className="p-2 text-slate-400 hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all"
-                        >
-                            <RefreshCcw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-                        </button>
-                        <button
-                            onClick={exportToCSV}
-                            className="flex items-center space-x-2 bg-slate-800 px-4 py-2 rounded-lg text-sm font-bold text-white hover:bg-slate-700 transition-all"
-                        >
-                            <Download className="w-4 h-4" />
-                            <span>Export CSV</span>
-                        </button>
-                        <button
                             onClick={() => setIsAuthenticated(false)}
                             className="text-red-500 p-2 hover:bg-red-500/10 rounded-lg transition-all"
                         >
@@ -132,66 +74,116 @@ export default function AdminDashboard() {
                 </div>
             </nav>
 
-            <main className="max-w-7xl mx-auto px-6 py-12">
-                <div className="mb-10 flex justify-between items-end">
-                    <div>
-                        <h1 className="text-3xl font-serif font-bold text-white">Inbound Prospects</h1>
-                        <p className="text-slate-400 mt-2 font-medium">Showing {leads.length} live lead records</p>
+            <main className="max-w-4xl mx-auto px-6 py-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-6"
+                >
+                    {/* Header */}
+                    <div className="text-center mb-12">
+                        <h1 className="text-4xl font-serif font-bold text-white mb-3">Lead Management System</h1>
+                        <p className="text-slate-400 font-medium">Email-based lead capture system</p>
                     </div>
-                </div>
 
-                {/* Sheets-style Table */}
-                <div className="bg-slate-900/40 border border-slate-700 rounded-xl shadow-lg overflow-hidden glass">
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
-                            <thead>
-                                <tr className="bg-slate-800/50 border-b border-slate-700 text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                                    <th className="px-6 py-4 border-r border-slate-700">Date Received</th>
-                                    <th className="px-6 py-4 border-r border-slate-700 text-white flex items-center gap-2">
-                                        <Mail className="w-3 h-3 text-secondary" /> Email Address
-                                    </th>
-                                    <th className="px-6 py-4 border-r border-slate-700 text-white flex items-center gap-2">
-                                        <Phone className="w-3 h-3 text-secondary" /> Phone
-                                    </th>
-                                    <th className="px-6 py-4 text-white">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-700">
-                                {leads.length > 0 ? (
-                                    leads.map((lead) => (
-                                        <tr key={lead.id} className="hover:bg-slate-800/50 transition-colors">
-                                            <td className="px-6 py-4 border-r border-slate-700 whitespace-nowrap text-sm text-slate-400 font-medium">
-                                                {new Date(lead.created_at).toLocaleString('en-US', {
-                                                    month: 'short',
-                                                    day: 'numeric',
-                                                    hour: '2-digit',
-                                                    minute: '2-digit'
-                                                })}
-                                            </td>
-                                            <td className="px-6 py-4 border-r border-slate-700 font-bold text-white">
-                                                {lead.email}
-                                            </td>
-                                            <td className="px-6 py-4 border-r border-slate-700 font-medium text-slate-300">
-                                                {lead.phone}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-[10px] font-bold uppercase tracking-wider border border-green-700/50">
-                                                    {lead.status}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan={4} className="px-6 py-20 text-center text-slate-400 font-medium italic">
-                                            No leads captured yet.
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
+                    {/* Info Card */}
+                    <div className="bg-blue-900/30 border border-blue-700/50 rounded-2xl p-8 mb-8 backdrop-blur-sm">
+                        <div className="flex items-start space-x-4">
+                            <div className="flex-shrink-0">
+                                <Info className="w-8 h-8 text-blue-400" />
+                            </div>
+                            <div className="flex-1">
+                                <h2 className="text-2xl font-serif font-bold text-blue-200 mb-3">
+                                    Email-Only Lead Capture
+                                </h2>
+                                <p className="text-blue-300 mb-4 leading-relaxed">
+                                    All lead submissions are automatically sent to your email inbox in real-time.
+                                    No database storage is required - your email serves as the source of truth for all captured leads.
+                                </p>
+                                <p className="text-blue-400/80 text-sm">
+                                    This architecture is optimized for Vercel's serverless environment and requires zero maintenance.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    {/* How it Works */}
+                    <div className="bg-slate-900/40 border border-slate-700 rounded-2xl p-8 shadow-lg backdrop-blur-sm">
+                        <h3 className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
+                            <CheckCircle2 className="w-6 h-6 text-green-500" />
+                            How Lead Capture Works
+                        </h3>
+                        <div className="space-y-4 text-slate-300">
+                            <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                                <p><strong className="text-white">User submits form</strong> - Prospect enters email and phone number on your landing page</p>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center text-xs font-bold">2</div>
+                                <p><strong className="text-white">Confirmation email sent</strong> - Prospect receives email with Calendly booking link</p>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center text-xs font-bold">3</div>
+                                <p><strong className="text-white">Team notification sent</strong> - Your team receives internal notification with lead details</p>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center text-xs font-bold">4</div>
+                                <p><strong className="text-white">Prospect redirects to Calendly</strong> - User sees success screen with booking button</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Email Recipients */}
+                    <div className="bg-slate-900/40 border border-slate-700 rounded-2xl p-8 shadow-lg backdrop-blur-sm">
+                        <h3 className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
+                            <Mail className="w-6 h-6 text-secondary" />
+                            Lead Notification Recipients
+                        </h3>
+                        <p className="text-slate-300 mb-4">
+                            All new leads are automatically emailed to:
+                        </p>
+                        <div className="space-y-2">
+                            {emailAddresses.map((email, idx) => (
+                                <div key={idx} className="flex items-center space-x-3 bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3">
+                                    <Mail className="w-4 h-4 text-secondary" />
+                                    <span className="font-mono text-sm text-white font-medium">{email}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-xs text-slate-500 mt-4">
+                            These email addresses are configured via environment variables in Vercel.
+                        </p>
+                    </div>
+
+                    {/* Benefits */}
+                    <div className="bg-green-900/20 border border-green-700/50 rounded-2xl p-8 backdrop-blur-sm">
+                        <h3 className="text-xl font-serif font-bold text-green-200 mb-4">
+                            System Benefits
+                        </h3>
+                        <ul className="space-y-2 text-green-300">
+                            <li className="flex items-start space-x-2">
+                                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                                <span>No database costs or maintenance required</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                                <span>Perfect for Vercel serverless deployment</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                                <span>All lead data searchable in your email inbox</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                                <span>Instant notifications - no polling or syncing needed</span>
+                            </li>
+                            <li className="flex items-start space-x-2">
+                                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                                <span>Simple, stateless architecture</span>
+                            </li>
+                        </ul>
+                    </div>
+                </motion.div>
             </main>
         </div>
     );
