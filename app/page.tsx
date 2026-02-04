@@ -299,6 +299,15 @@ export default function Home() {
           <div className="absolute left-0 bottom-0 w-1/3 h-1/2 bg-blue-900/10 blur-[120px] pointer-events-none"></div>
 
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="mb-12 reveal">
+              <Image
+                src="/assets/1cropped_download.png"
+                alt="Professional Handshake"
+                width={600}
+                height={400}
+                className="w-full max-w-2xl mx-auto h-auto rounded-xl shadow-2xl opacity-90 hover:opacity-100 transition-opacity duration-700 object-cover"
+              />
+            </div>
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-8 reveal leading-tight">Elevate Your Real Estate Brokerage</h2>
             <p className="text-xl text-slate-300 mb-12 reveal delay-100 font-medium max-w-3xl mx-auto leading-relaxed">
               We accept a limited number of new partners each month to ensure service quality.
