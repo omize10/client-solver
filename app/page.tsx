@@ -190,6 +190,21 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Family Success Image */}
+        <section className="section-padding relative bg-primary/20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="reveal">
+              <Image
+                src="/assets/images2-nomarkai.png"
+                alt="Family with Sold Sign"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded-xl shadow-2xl opacity-90 hover:opacity-100 transition-opacity duration-700 object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Competitive Advantage (Benefits) */}
         <section id="benefits" className="section-padding relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
